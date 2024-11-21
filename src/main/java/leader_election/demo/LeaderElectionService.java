@@ -42,10 +42,14 @@ public class LeaderElectionService {
     }
 
     public void electLeader() throws Exception {
-        if (zkClient.checkExists().forPath(LEADER_NODE) == null) {
-            zkClient.create().withMode(CreateMode.EPHEMERAL).forPath(LEADER_NODE, serviceId.getBytes());
+        try {
+                zkClient.create().withMode(CreateMode.EPHEMERAL).forPath(LEADER_NODE, serviceId.getBytes());
+                System.out.println("Service " + serviceId + " is now the leader.");
+        } catch (Exception e) {
+            System.out.println("Service " + serviceId + " is a worker.");
         }
     }
+
 
     public void watchLeaderChanges() throws Exception {
         zkClient.getData().usingWatcher((CuratorWatcher) event -> {
