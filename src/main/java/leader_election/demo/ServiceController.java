@@ -16,4 +16,3 @@ public class ServiceController {
         return "This service is " + leaderElectionService.getServiceRole();
     }
 }
-
