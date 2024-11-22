@@ -7,38 +7,6 @@ This project demonstrates leader election using Apache ZooKeeper and Spring Boot
 - Other services act as workers.
 - Monitors the leader node and re-elects a leader in case of failure.
 
----
-
-## **Project Structure**
-1. **`ZookeeperConfig`**  
-   Configures the CuratorFramework to connect to ZooKeeper using the provided host and namespace.
-
-2. **`LeaderElectionService`**  
-   Handles leader election:
-    - Creates an ephemeral `/leader` node with the `serviceId`.
-    - Watches for node changes and re-elects a leader if needed.
-    - Determines whether the current service is a leader or a worker.
-
-3. **`ServiceController`**  
-   Provides an endpoint `/status` to check whether the current service is a leader or worker.
-
-4. **`application.yaml`**  
-   Configures ZooKeeper connection details.
-
----
-
-## **How It Works**
-1. **Initialization**
-    - Each service generates a unique `serviceId`.
-    - Attempts to create the `/leader` node.
-
-2. **Leader Election**
-    - The first service to create `/leader` becomes the leader.
-    - Other services read `/leader` to determine their role.
-
-3. **Failure Handling**
-    - If the leader fails, the `/leader` node is deleted.
-    - Other services are notified, and a new leader is elected.
 
 ---
 
