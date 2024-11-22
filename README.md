@@ -1,6 +1,6 @@
 # Leader Election with ZooKeeper
 
-This project demonstrates leader election using Apache ZooKeeper and Spring Boot. It uses the Curator framework to interact with ZooKeeper for distributed coordination among multiple services.
+This project demonstrates leader election using Apache ZooKeeper and Spring Boot.
 
 ## **Features**
 - Elects one service as the leader.
@@ -28,10 +28,6 @@ This project demonstrates leader election using Apache ZooKeeper and Spring Boot
 - Java 11+
 - Spring Boot
 - Apache ZooKeeper
-- Apache Curator
-
----
-Here’s an updated **Testing** section for the README with commands included:
 
 ---
 
